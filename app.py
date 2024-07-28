@@ -25,18 +25,13 @@ def is_valid_json(data):
         return False
 
 # Retrieve Firebase JSON key from secrets or environment variables
-firebase_json_key = os.getenv("firebase_json_key", st.secrets.get("firebase", {}).get("firebase_json_key", ""))
-firebase_credentials = json.loads(firebase_json_key)
-
-if "firebase_json_key" in os.environ:
-    firebase_json_key = os.getenv("firebase_json_key")
-
+firebase_json_key = os.getenv("firebase_json_key", st.secrets["firebase"]["firebase_json_key"])
 firebase_credentials = json.loads(firebase_json_key)
 
 # Function to initialize connection to Firebase Firestore
 @st.cache_resource
 def init_connection():
-    cred = credentials.Certificate(firebase_credentials)
+    cred = credentials.Certificate('templates/firebase.json')
     firebase_admin.initialize_app(cred)
     return firestore.client()
 

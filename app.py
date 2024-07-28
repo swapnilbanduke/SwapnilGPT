@@ -11,9 +11,11 @@ from langchain.prompts import load_prompt
 from langchain.text_splitter import CharacterTextSplitter
 from streamlit import session_state as ss
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials
+from firebase_admin import firestore
 import uuid
 import json
+import time
 import datetime
 
 # Function to check if a string is a valid JSON
@@ -48,7 +50,7 @@ else:
     st.write("Unable to access conversations collection. Firebase connection not established.")
 
 # Retrieve OpenAI API key
-openai_api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", ""))
+openai_api_key = os.getenv("OPENAI_API_KEY", st.secrets["OPENAI_API_KEY"])
 
 # Streamlit app title and disclaimer
 st.title("SwapnilGPT - Swapnil's Resume Bot")
@@ -65,8 +67,6 @@ data_source = os.path.join(path, "data/scrapped data.csv")
 
 # Function to store conversation in Firebase
 def store_conversation(conversation_id, user_message, bot_message, answered):
-    if not db or not conversations_collection:
-        return
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     data = {
         "conversation_id": conversation_id,
@@ -184,6 +184,8 @@ if "messages" not in st.session_state:
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         welcome_message ="Welcome! I'm **Resume Bot**, a virtual assistant designed to provide insights into Swapnil C. Banduke's background and qualifications.\n\nFeel free to inquire about any aspect of Swapnil's profile, such as his educational journey, internships, professional projects, areas of expertise in data science, machine learning, database management, or his future goals.\n\n- His Master's in Business Analytics with a focus on Data Science from UTD\n- His track record in roles at companies like Kirloskar Brothers Limited and EVERSANA\n- His proficiency in programming languages, ML frameworks, data visualization tools, and database management systems\n- His passion for leveraging data to drive business impact and optimize performance\n\nWhat would you like to know first? I'm ready to answer your questions in detail."
+
+
         message_placeholder.markdown(welcome_message)
 
 if 'history' not in st.session_state:

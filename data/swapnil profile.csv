@@ -1,0 +1,59 @@
+Section,Detail,Description
+Personal Details,Name,Swapnil C. Banduke
+Personal Details,Phone,+1 (469)-427-1328
+Personal Details,Location,"Texas, USA"
+Personal Details,Email,swapnil.banduke@utdallas.edu
+Personal Details,LinkedIn,Linkedin URL
+Personal Details,Github,Github URL
+Personal Details,Portfolio,Portfolio URL
+Education,University of Texas at Dallas,"Master of Science, Business Analytics, May 2025, GPA 3.9/4.0"
+Education,"Government College of Engineering, Karad, India","Bachelor of Technology, Electrical Engineering, Jun 2021, GPA 3.6/4.0"
+Technical Skills,Programming Languages,"SQL, Python, R"
+Technical Skills,Databases,"MS SQL Server, MySQL, Oracle, PostgreSQL"
+Technical Skills,Data Analytics & Visualization Tools,"Tableau, Power BI, R Studio, Advanced MS Excel, MS Office, Snowflake"
+Work Experience,"Eversana, Kansas","Applied Insight Intern, Jun 2024- Present: Improved database efficiency in Snowflake by optimizing SQL queries, resulting in a 35% reduction in query execution time; Designed a Tableau dashboard to visualize and track promotional campaign metrics, optimizing marketing strategies by 25%; Developed ETL pipelines to scrape affinity data, reducing manual processing effort by 30%; Developed a proprietary Generative AI tool leveraging HuggingFace and LLM, increasing efficiency by 40%"
+Work Experience,"Kirloskar Brothers Limited, Pune, India","Data Analyst, July 2021- Aug 2023: Conducted root cause analysis using Python and SQL, resulting in a 15% reduction in manufacturing costs; Developed custom Power BI dashboards, improving project efficiency by 10%; Implemented data cleaning techniques, achieving a 95% reduction in machine downtime, saving $47,000 annually; Developed periodic reports, saving senior management 3 days per month"
+Academic Projects,Customer Churn Analysis,"Optimized RandomForest model achieving 94% accuracy; Implemented strategies reducing churn by 3%; Analyzed customer behavior data, improving retention strategies by 15%"
+Academic Projects,British Airways Customer Feedback Analysis,"Scraped 10,000 reviews, improving data collection efficiency by 40%; Analyzed feedback revealing 30% related to flight delays and 25% to in-flight service; Developed reports identifying key customer segments, projecting a 10% revenue boost"
+Sample Q&A,Question,What techniques did you use to optimize SQL queries in Snowflake?
+Sample Q&A,Answer,"I used query rewriting, indexing, and query plan analysis to optimize SQL queries, resulting in a 35% reduction in query execution time."
+Sample Q&A,Question,How did you integrate the Tableau dashboard with Salesforce Einstein?
+Contact,"Location: Richardson, Texas
+Phone: +1 469-427-1328
+Email: swapnilbanduke35@gmail.com
+LinkedIn: www.linkedin.com/in/swapnil-banduke
+Portfolio: sites.google.com/view/swapnilbanduke/home",
+Summary,"Data Analyst with over 2 years of experience in converting data into meaningful insights. Proficient in data science, data analysis, data visualization, machine learning, SQL, and Python. Currently pursuing a Master’s of Science in Business Analytics at The University of Texas at Dallas.",
+Skills,"Top Skills: Statistics, Problem Solving, R (Programming Language)
+Languages: Marathi (Native or Bilingual), English (Professional Working), Hindi (Professional Working)
+Certifications: Basic Electrical Circuits, Power System Analysis, Ansys Maxwell, Power BI in Data Analytics, Data Analytics and Visualization",
+Honors & Awards,"Secured All India Rank Two (AIR 2), INSPIRE Scholarship for performance in Top 1%",
+Publications,Fingerprint Based Payment System,
+Experience,"EVERSANA
+Role: Applied Insights Intern
+Duration: June 2024 - Present (2 months)
+Location: Kansas, United States
+
+Kirloskar Brothers Limited
+Role: Data Analyst
+Duration: August 2022 - August 2023 (1 year 1 month)
+Location: Pune, Maharashtra, India
+Responsibilities: Utilized PowerBI to create visual reports, analyzed past motor design data to predict design parameters, managed machine maintenance activities to forecast requirements, reduced development cost by 7%, reduced unforeseeable downtime by 10%.",
+Education,"The University of Texas at Dallas
+Degree: Master of Science (MS) in Business Analytics and Artificial Intelligence
+Duration: August 2023 - May 2025
+
+Government College of Engineering Karad
+Degree: B.Tech in Electrical Engineering
+Duration: August 2017 - July 2021
+
+Yashwantrao Chavan Institute of Science Satara
+Degree: 12th, Science
+Duration: June 2015 - May 2017
+
+Date Prashala School, Natepute
+Degree: SSC, Science
+Duration: June 2014 - May 2015",
+,,
+Questions ,,
+How swapnil is doing in Gen ai,"Swapnil developed a proprietary Generative AI tool utilizing a RAG model for text mining on weekly magazine reports, resulting in a 40% increase in efficiency for extracting industry-relevant information. This project was done during his time as a Applied Insight Intern at Eversana. From the provided information, Swapnil seems to have a strong background in data analytics and AI, showcasing his skills and experience in the field.",

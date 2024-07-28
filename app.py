@@ -28,21 +28,31 @@ def is_valid_json(data):
 firebase_json_key = os.getenv("firebase_json_key", st.secrets.get("firebase", {}).get("firebase_json_key", ""))
 firebase_credentials = json.loads(firebase_json_key)
 
+if "firebase_json_key" in os.environ:
+    firebase_json_key = os.getenv("firebase_json_key")
+else:
+    firebase_json_key = st.secrets["firebase_json_key"]
+
+firebase_credentials = json.loads(firebase_json_key)
+
 # Function to initialize connection to Firebase Firestore
 @st.cache_resource
 def init_connection():
-    if not firebase_admin._apps:
-        cred = credentials.Certificate(firebase_credentials)
-        firebase_admin.initialize_app(cred)
+    cred = credentials.Certificate(firebase_credentials)
+    firebase_admin.initialize_app(cred)
     return firestore.client()
 
 # Attempt to connect to Firebase Firestore
 try:
     db = init_connection()
-    conversations_collection = db.collection('conversations')
 except Exception as e:
-    st.error("Failed to connect to Firebase: {}".format(e))
-    db, conversations_collection = None, None
+    st.write("Failed to connect to Firebase:", e)
+
+# Access Firebase Firestore collection
+if 'db' in locals():
+    conversations_collection = db.collection('conversations')
+else:
+    st.write("Unable to access conversations collection. Firebase connection not established.")
 
 # Retrieve OpenAI API key
 openai_api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", ""))

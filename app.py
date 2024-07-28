@@ -30,8 +30,6 @@ firebase_credentials = json.loads(firebase_json_key)
 
 if "firebase_json_key" in os.environ:
     firebase_json_key = os.getenv("firebase_json_key")
-else:
-    firebase_json_key = st.secrets["firebase_json_key"]
 
 firebase_credentials = json.loads(firebase_json_key)
 

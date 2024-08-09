@@ -31,6 +31,8 @@ firebase_json_key = os.getenv("firebase_json_key", st.secrets["firebase"]["fireb
 firebase_credentials = json.loads(firebase_json_key)
 
 # Function to initialize connection to Firebase Firestore
+firebase_app = None
+
 @st.cache_resource
 def init_connection():
     global firebase_app

@@ -25,10 +25,8 @@ def is_valid_json(data):
     except json.JSONDecodeError:
         return False
 
-if "firebase_json_key" in os.environ:
-    firebase_json_key = os.getenv("firebase_json_key")
-else:
-    firebase_json_key = st.secrets["firebase"]["firebase_json_key"]
+
+firebase_json_key = st.secrets["firebase"]["firebase_json_key"]
 
 firebase_credentials = json.loads(firebase_json_key)
 

@@ -37,7 +37,7 @@ firebase_app = None
 def init_connection():
     global firebase_app
     if not firebase_app:
-        cred = credentials.Certificate(st.secrets["firebase"]["json_key"])
+        cred = credentials.Certificate(st.secrets["firebase"]["firebase_json_key"])
         firebase_app = firebase_admin.initialize_app(cred)
     return firestore.client()
 

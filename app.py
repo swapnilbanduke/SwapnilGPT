@@ -18,7 +18,6 @@ import json
 import time
 import datetime
 
-# Function to check if a string is a valid JSON
 def is_valid_json(data):
     try:
         json.loads(data)
@@ -26,21 +25,20 @@ def is_valid_json(data):
     except json.JSONDecodeError:
         return False
 
-# Retrieve Firebase JSON key from secrets or environment variables
-firebase_json_key = os.getenv("firebase_json_key", st.secrets["firebase"]["firebase_json_key"])
+if "firebase_json_key" in os.environ:
+    firebase_json_key = os.getenv("firebase_json_key")
+else:
+    firebase_json_key = st.secrets["firebase_json_key"]
+
 firebase_credentials = json.loads(firebase_json_key)
 
 # Function to initialize connection to Firebase Firestore
-firebase_app = None
-
 @st.cache_resource
 def init_connection():
-    global firebase_app
-    if not firebase_app:
-        # Initialize Firebase only if it's not already initialized
-        cred = credentials.Certificate('templates/firebase.json')
-        firebase_app = firebase_admin.initialize_app(cred)
+    cred = credentials.Certificate(firebase_credentials)
+    firebase_admin.initialize_app(cred)
     return firestore.client()
+
 # Attempt to connect to Firebase Firestore
 try:
     db = init_connection()
@@ -52,7 +50,6 @@ if 'db' in locals():
     conversations_collection = db.collection('conversations')
 else:
     st.write("Unable to access conversations collection. Firebase connection not established.")
-
 # Retrieve OpenAI API key
 openai_api_key = os.getenv("OPENAI_API_KEY", st.secrets["OPENAI_API_KEY"])
 

@@ -34,20 +34,26 @@ firebase_credentials = json.loads(firebase_json_key)
 
 # Function to initialize connection to Firebase Firestore
 @st.cache_resource
+# Global variable to track Firebase initialization
+firebase_app = None
+
 def init_connection():
-    cred = credentials.Certificate(firebase_credentials)
-    firebase_admin.initialize_app(cred)
+    global firebase_app
+    if not firebase_app:
+        cred = credentials.Certificate(st.secrets["firebase"]["json_key"])
+        firebase_app = firebase_admin.initialize_app(cred)
     return firestore.client()
 
-# Attempt to connect to Firebase Firestore
 try:
     db = init_connection()
 except Exception as e:
     st.write("Failed to connect to Firebase:", e)
 
-# Access Firebase Firestore collection
 if 'db' in locals():
-    conversations_collection = db.collection('conversations')
+    try:
+        conversations_collection = db.collection('conversations')
+    except Exception as e:
+        st.write("Failed to access conversations collection:", e)
 else:
     st.write("Unable to access conversations collection. Firebase connection not established.")
 # Retrieve OpenAI API key

@@ -33,8 +33,7 @@ else:
 firebase_credentials = json.loads(firebase_json_key)
 
 # Function to initialize connection to Firebase Firestore
-@st.cache_resource
-# Global variable to track Firebase initialization
+
 firebase_app = None
 
 def init_connection():

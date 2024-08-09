@@ -33,10 +33,12 @@ firebase_credentials = json.loads(firebase_json_key)
 # Function to initialize connection to Firebase Firestore
 @st.cache_resource
 def init_connection():
-    cred = credentials.Certificate('templates/firebase.json')
-    firebase_admin.initialize_app(cred)
+    global firebase_app
+    if not firebase_app:
+        # Initialize Firebase only if it's not already initialized
+        cred = credentials.Certificate('templates/firebase.json')
+        firebase_app = firebase_admin.initialize_app(cred)
     return firestore.client()
-
 # Attempt to connect to Firebase Firestore
 try:
     db = init_connection()

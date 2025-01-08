@@ -88,47 +88,32 @@ embeddings = OpenAIEmbeddings()
 if os.path.exists(faiss_index):
     vectors = FAISS.load_local(faiss_index, embeddings, allow_dangerous_deserialization=True)
 else:
-    def extract_and_split_text_from_pdfs(pdf_paths, text_splitter):
-        combined_text = ""
-        for path in pdf_paths:
-            try:
-                with pdfplumber.open(path) as pdf:
-                    for page in pdf.pages:
-                        combined_text += page.extract_text() or ""
-            except Exception as e:
-                print(f"Error reading {path}: {e}")
-    
-        # Split text into chunks
-        text_chunks = text_splitter.split_text(combined_text)
-        return text_chunks
-
-    def get_pdf_paths(directory):
-        return [os.path.join(directory, f) for f in os.listdir(directory) if f.lower().endswith('.pdf')]
-
-    # Define the directory containing the PDFs
-    pdf_directory = "data"  # Update with your directory path
-
-    # Initialize the text splitter
+    # Load data from PDF and CSV sources
     text_splitter = CharacterTextSplitter(
-        separator="\n",
-        chunk_size=400,
-        chunk_overlap=40
+    separator="\n",
+    chunk_size=400,
+    chunk_overlap=40
     )
-
-    # Get PDF paths and extract and split text
-    pdf_paths = get_pdf_paths(pdf_directory)
-    pdf_data = extract_and_split_text_from_pdfs(pdf_paths, text_splitter)
-
+    pdf_loader = PyPDFLoader(pdf_source)
+    pdf_data = pdf_loader.load_and_split(text_splitter=text_splitter)
     csv_loader = CSVLoader(file_path=data_source, encoding="utf-8")
     csv_data = csv_loader.load()
     data = pdf_data + csv_data
 
     # Create embeddings for the documents and save the index
     vectors = FAISS.from_documents(data, embeddings)
-    vectors.save_local(faiss_index)
+    vectors.save_local("faiss_index")
 
 # Initialize conversational retrieval chain
 retriever = vectors.as_retriever(search_type="similarity", search_kwargs={"k": 6, "include_metadata": True, "score_threshold": 0.6})
+chain = ConversationalRetrievalChain.from_llm(llm=ChatOpenAI(temperature=0.5, model_name='gpt-3.5-turbo-0125', openai_api_key=openai_api_key), 
+                                              retriever=retriever, return_source_documents=True, verbose=True, chain_type="stuff",
+                                              max_tokens_limit=4097, combine_docs_chain_kwargs={"prompt": prompt})
+
+# Initialize conversational retrieval chain
+retriever = vectors.as_retriever(search_type="similarity", search_kwargs={"k": 6, "include_metadata": True, "score_threshold": 0.6})
+
+
 chain = ConversationalRetrievalChain.from_llm(
     llm=ChatOpenAI(temperature=0.5, model_name='gpt-3.5-turbo-0125', openai_api_key=openai_api_key),
     retriever=retriever,

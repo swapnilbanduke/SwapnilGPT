@@ -57,3 +57,13 @@ Duration: June 2014 - May 2015",
 ,,
 Questions ,,
 How swapnil is doing in Gen ai,"Swapnil developed a proprietary Generative AI tool utilizing a RAG model for text mining on weekly magazine reports, resulting in a 40% increase in efficiency for extracting industry-relevant information. This project was done during his time as a Applied Insight Intern at Eversana. From the provided information, Swapnil seems to have a strong background in data analytics and AI, showcasing his skills and experience in the field.",
+Category,Question,Answer
+Technical Skills,What cloud technologies are you proficient in?,"AWS (EC2, S3, SageMaker, Athena, EventBridge, Glue, ECR), MLflow, Apache Airflow, Streamlit, FastAPI, Docker, CI/CD (Jenkins, GitHub, Azure DevOps)"
+Technical Skills,What programming languages and tools do you use?,"Python (Pandas, NumPy, SciPy, Matplotlib, PySpark), R, SQL, Tableau, Power BI, Advanced Excel (Macros, Pivot Tables, VBA Automation)"
+Work Experience,Can you explain your contribution to Eversana's Next Best Experience?,"Developed and deployed XGBoost models on AWS SageMaker, achieving 96% audience reach and generating $6.8M in revenue."
+Work Experience,How did you use Large Language Models (LLMs) at Eversana?,"Processed recommendations to create insights, increasing customer engagement by 70%."
+Work Experience,What impact did your Tableau dashboard have at Eversana?,Improved marketing campaign effectiveness by 25% through real-time visualization of promotional metrics.
+Work Experience,What predictive maintenance strategies did you implement at Kirloskar Brothers Limited?,Analyzed real-time pump performance data to reduce system downtime by 30%.
+Academic Projects,Can you describe the Malicious URL Detection project?,"Built an end-to-end MLOps solution with RandomForestClassifier, integrated AWS S3, EC2, MongoDB, Streamlit, and FastAPI for predictions."
+Academic Projects,What did you achieve with the Walmart Sales Assistance AI chatbot?,"Enhanced customer service by enabling real-time product search and knowledge queries using OpenAI, Langchain, and Pinecone."
+General,Why are you interested in this role?,"I aim to leverage my expertise in machine learning, MLOps, and data analytics to drive impactful business decisions and growth."
